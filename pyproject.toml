@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "scalably-ga4-mcp"
+version = "1.0.0"
+description = "Read-only MCP server for Google Analytics 4: reports, realtime, funnels, pivots, metadata catalog and admin lists across the Data and Admin APIs."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Scalably", email = "hello@scalably.io" }]
+keywords = ["mcp", "model-context-protocol", "google-analytics", "ga4", "analytics", "scalably"]
+classifiers = ["Programming Language :: Python :: 3", "License :: OSI Approved :: MIT License"]
+dependencies = [
+    "mcp>=1.6.0,<2",
+    "google-analytics-data==0.21.0",
+    "google-analytics-admin==0.28.0",
+    "google-auth~=2.40",
+    "google-api-core>=2.19.0",
+    "proto-plus>=1.24.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+scalably-ga4-mcp = "scalably_ga4_mcp.server:main"
+
+[project.urls]
+Homepage = "https://scalably.io/mcp/ga4-mcp"
+Repository = "https://github.com/scalably-io/ga4-mcp"
+Issues = "https://github.com/scalably-io/ga4-mcp/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/scalably_ga4_mcp"]

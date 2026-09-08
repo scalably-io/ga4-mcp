@@ -1,0 +1,143 @@
+{
+  "manifest_version": "0.4",
+  "name": "ga4-mcp",
+  "display_name": "Google Analytics 4 MCP",
+  "version": "1.0.0",
+  "description": "Read-only MCP server for Google Analytics 4: reports, realtime, funnels, pivots, metadata catalog and admin lists across the Data and Admin APIs.",
+  "author": {
+    "name": "Scalably",
+    "email": "hello@scalably.io",
+    "url": "https://scalably.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scalably-io/ga4-mcp"
+  },
+  "homepage": "https://scalably.io/mcp/ga4-mcp",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "google-analytics",
+    "ga4",
+    "analytics",
+    "scalably"
+  ],
+  "server": {
+    "type": "uv",
+    "entry_point": "src/scalably_ga4_mcp/__main__.py",
+    "mcp_config": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "${__dirname}",
+        "python",
+        "-m",
+        "scalably_ga4_mcp"
+      ],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "${user_config.service_account_json}",
+        "GA4_LOG_LEVEL": "${user_config.log_level}"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "ga4_list_account_summaries",
+      "description": "List every GA4 account and its child properties accessible to this service account"
+    },
+    {
+      "name": "ga4_get_property_details",
+      "description": "Full metadata for a single GA4 property"
+    },
+    {
+      "name": "ga4_list_data_streams",
+      "description": "List all data streams (web, iOS, Android) on a GA4 property"
+    },
+    {
+      "name": "ga4_list_custom_dimensions",
+      "description": "List custom dimensions configured on a GA4 property"
+    },
+    {
+      "name": "ga4_list_custom_metrics",
+      "description": "List custom metrics configured on a GA4 property"
+    },
+    {
+      "name": "ga4_list_key_events",
+      "description": "List key events (formerly conversions) on a GA4 property"
+    },
+    {
+      "name": "ga4_list_audiences",
+      "description": "List audiences defined on a GA4 property"
+    },
+    {
+      "name": "ga4_list_google_ads_links",
+      "description": "List Google Ads links attached to a GA4 property"
+    },
+    {
+      "name": "ga4_list_property_annotations",
+      "description": "List reporting annotations on a GA4 property"
+    },
+    {
+      "name": "ga4_run_access_report",
+      "description": "Audit log of who read what on a GA4 property, last 12 months"
+    },
+    {
+      "name": "ga4_get_metadata",
+      "description": "Fetch the full GA4 dimension and metric catalog for a property"
+    },
+    {
+      "name": "ga4_run_report",
+      "description": "Run a GA4 standard report, the workhorse tool"
+    },
+    {
+      "name": "ga4_batch_run_reports",
+      "description": "Run up to 5 GA4 reports in a single round trip"
+    },
+    {
+      "name": "ga4_run_pivot_report",
+      "description": "Run a GA4 pivot report"
+    },
+    {
+      "name": "ga4_run_realtime_report",
+      "description": "Run a GA4 real-time report covering the last 30 minutes"
+    },
+    {
+      "name": "ga4_check_compatibility",
+      "description": "Validate whether a dimension and metric combo can be queried together"
+    },
+    {
+      "name": "ga4_run_funnel_report",
+      "description": "Run a GA4 funnel report (v1alpha, drop-off analysis)"
+    }
+  ],
+  "user_config": {
+    "service_account_json": {
+      "type": "file",
+      "title": "Service account JSON",
+      "description": "Google service-account key file with the analytics.readonly scope",
+      "required": true,
+      "sensitive": true
+    },
+    "log_level": {
+      "type": "string",
+      "title": "Log level",
+      "description": "INFO or DEBUG",
+      "default": "INFO",
+      "required": false,
+      "sensitive": false
+    }
+  },
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": [
+      "darwin",
+      "win32",
+      "linux"
+    ],
+    "runtimes": {
+      "python": ">=3.10"
+    }
+  }
+}

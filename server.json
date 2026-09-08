@@ -1,0 +1,38 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.scalably/ga4-mcp",
+  "title": "Google Analytics 4 MCP",
+  "description": "Google Analytics 4 MCP: reports, realtime, funnels, pivots, metadata, admin lists. 17 tools.",
+  "repository": {
+    "url": "https://github.com/scalably-io/ga4-mcp",
+    "source": "github"
+  },
+  "websiteUrl": "https://scalably.io/mcp/ga4-mcp",
+  "version": "1.0.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "registryBaseUrl": "https://pypi.org",
+      "identifier": "scalably-ga4-mcp",
+      "version": "1.0.0",
+      "runtimeHint": "uvx",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "GOOGLE_APPLICATION_CREDENTIALS",
+          "description": "Path to a Google service-account JSON file with the analytics.readonly scope; add the service account as a Viewer on each GA4 property",
+          "isRequired": true,
+          "isSecret": false
+        },
+        {
+          "name": "GA4_LOG_LEVEL",
+          "description": "Log level, default INFO",
+          "isRequired": false,
+          "isSecret": false
+        }
+      ]
+    }
+  ]
+}
