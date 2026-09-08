@@ -84,7 +84,7 @@ Every tool returns JSON with `status` (`succeeded`, `partial`, `no_op`), `summar
 
 ## Limits
 
-250,000 rows per Data API response (the server caps any higher client-supplied limit). Batch reports: up to 5 per call. Funnel reports: up to 10 steps. Realtime reports use a separate, smaller dimension and metric catalog covering only the last 30 minutes; non-realtime data typically lags 24 to 48 hours. Funnel reporting is v1alpha and its shape can change upstream. Every quota bucket (core reports, realtime, funnel) allows roughly 14,000 requests per project per property per hour as of the underlying server's last verification; 360 properties get a 10x multiplier. Re-check Google's current quota page before relying on an exact number.
+250,000 rows per Data API response (the server caps any higher client-supplied limit). Batch reports: up to 5 per call. Funnel reports: up to 10 steps. Realtime reports use a separate, smaller dimension and metric catalog covering only the last 30 minutes; non-realtime data typically lags 24 to 48 hours. Funnel reporting is v1alpha and its shape can change upstream. Every quota bucket (core reports, realtime, funnel) allows roughly 14,000 quota tokens per project per property per hour (a complex query can cost more than one token); 360 properties get a 10x multiplier. Re-check Google's current quota page before relying on an exact number.
 
 ## Verify
 
