@@ -14,7 +14,7 @@ keywords = ["mcp", "model-context-protocol", "google-analytics", "ga4", "analyti
 classifiers = ["Programming Language :: Python :: 3", "License :: OSI Approved :: MIT License"]
 dependencies = [
     "mcp>=1.6.0,<2",
-    "google-analytics-data==0.21.0",
+    "google-analytics-data==0.23.0",
     "google-analytics-admin==0.28.0",
     "google-auth~=2.40",
     "google-api-core>=2.19.0",
