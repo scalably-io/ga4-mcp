@@ -61,7 +61,7 @@ def test_redact_hides_bearer_private_key_and_client_secret():
 
 
 def test_fail_is_plain_runtime_error():
-    with pytest.raises(RuntimeError, match=r"^ga4_run_report: boom "):
+    with pytest.raises(RuntimeError, match=r"^ga4_request_failed: boom "):
         server._fail("ga4_run_report", "boom")
 
 

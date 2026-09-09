@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1
+
+- Failures now read `ga4_request_failed: <message> <hint>` as the reply contract says; 1.0.0 repeated the tool name instead of a code.
+- README documents the `operation` and `target` reply keys.
+- The manifests test treats a field as a credential when its title or description says so, not only its env var name.
+
 ## 1.0.0
 
 - First public release. Derived from `container/tools/ga4-mcp/server.py` at `3122d1c8` (2026-08-31) in the private ScalablyAI repository. Changes from production: the private tool-outcome envelope is replaced by a plain JSON reply, tool annotations added (title, readOnlyHint, openWorldHint) on all 17 tools, no functional change.

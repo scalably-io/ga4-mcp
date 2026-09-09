@@ -79,8 +79,9 @@ def _reply(status: str, operation: str, summary: str, *, result=None, target=Non
 
 
 def _fail(operation: str, message: str, retryable: bool = False) -> None:
+    """Plain error: <code>: <message> <hint>. The operation name is already in the tool error the client shows."""
     hint = "Retry once after a delay." if retryable else "Correct credentials, permissions, identifiers, or parameters before retrying."
-    raise RuntimeError(f"{operation}: {message} {hint}")
+    raise RuntimeError(f"ga4_request_failed: {message} {hint}")
 
 
 _raw_tool = mcp.tool

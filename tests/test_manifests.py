@@ -37,7 +37,7 @@ def test_readme_carries_registry_marker_and_no_em_dash():
     assert "—" not in readme
 
 def test_secrets_marked_sensitive():
-    """Every user_config key wired to a credential-looking env var is sensitive, and nothing else is."""
+    """Every user_config key whose env var name, title or description mentions a credential is sensitive, and nothing else is."""
     manifest = json.loads((REPO / "manifest.json").read_text())
     env = manifest["server"]["mcp_config"]["env"]
     words = ("CREDENTIAL", "KEY", "TOKEN", "SECRET", "PASSWORD")
@@ -46,7 +46,9 @@ def test_secrets_marked_sensitive():
         m = re.fullmatch(r"\$\{user_config\.([a-z0-9_]+)\}", value)
         assert m, f"{var} must map to a user_config key, got {value!r}"
         assert m.group(1) in manifest["user_config"], m.group(1)
-        if any(w in var.upper() for w in words):
+        cfg = manifest["user_config"][m.group(1)]
+        text = (var + " " + cfg.get("title", "") + " " + cfg.get("description", "")).upper()
+        if any(w in text for w in words):
             expected.add(m.group(1))
     sensitive = {k for k, cfg in manifest["user_config"].items() if cfg.get("sensitive") is True}
     assert sensitive == expected, f"sensitive={sorted(sensitive)} expected={sorted(expected)}"

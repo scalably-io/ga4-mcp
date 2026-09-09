@@ -80,7 +80,7 @@ A raw `{"field_name": ..., "string_filter": ...}` is auto-wrapped into `{"filter
 
 ## Reply shape
 
-Every tool returns JSON with `status` (`succeeded`, `partial`, `no_op`), `summary`, `result`, `proof`, `warnings`, `recovery`. `proof.nextOffset` on a `partial` status means: continue from that offset. `proof.propertyQuota` carries the property's remaining Data API quota so the caller can self-throttle. `proof.dataQualityLimited` is true when the response was sampled, thresholded, or collapsed high-cardinality rows into `(other)`; treat such a result as directionally useful, not exact.
+Every tool returns JSON with `status` (`succeeded`, `partial`, `no_op`), `operation`, `summary`, `target`, `result`, `proof`, `warnings`, `recovery`. Failures surface as a tool error whose text is `ga4_request_failed: <message> <hint>`. `proof.nextOffset` on a `partial` status means: continue from that offset. `proof.propertyQuota` carries the property's remaining Data API quota so the caller can self-throttle. `proof.dataQualityLimited` is true when the response was sampled, thresholded, or collapsed high-cardinality rows into `(other)`; treat such a result as directionally useful, not exact.
 
 ## Limits
 

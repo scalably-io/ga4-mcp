@@ -2,7 +2,7 @@
   "manifest_version": "0.4",
   "name": "ga4-mcp",
   "display_name": "Google Analytics 4 MCP",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Read-only MCP server for Google Analytics 4: reports, realtime, funnels, pivots, metadata catalog and admin lists across the Data and Admin APIs.",
   "author": {
     "name": "Scalably",

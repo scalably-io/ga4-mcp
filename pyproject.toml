@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "scalably-ga4-mcp"
-version = "1.0.0"
+version = "1.0.1"
 description = "Read-only MCP server for Google Analytics 4: reports, realtime, funnels, pivots, metadata catalog and admin lists across the Data and Admin APIs."
 readme = "README.md"
 requires-python = ">=3.10"
